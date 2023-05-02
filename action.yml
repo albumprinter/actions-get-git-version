@@ -17,5 +17,5 @@ runs:
       run: dotnet tool install -g gitversion.tool && dotnet-gitversion /output buildserver
     - name: Set Version
       shell: bash
-      run: echo "::set-output name=version::${{ env.GitVersion_MajorMinorPatch }}${{ env.GitVersion_PreReleaseLabel && format('-{0}.{1}', env.GitVersion_PreReleaseLabel, github.run_number) || '' }}"
+      run: echo "version=${{ env.GitVersion_MajorMinorPatch }}${{ env.GitVersion_PreReleaseLabel && format('-{0}.{1}', env.GitVersion_PreReleaseLabel, github.run_number) || '' }}" >> $GITHUB_OUTPUT
       id: git-version
